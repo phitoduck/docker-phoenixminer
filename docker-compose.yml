@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  miner:
+    image: miner
+    build:
+      context: ./pheonix-miner
+    volumes:
+      - "./volumes/pheonix-miner:/logs:rw"
+    ports:
+      # monitor the pheonixminer on this port
+      - "25565:25565/tcp"
+    env_file:
+      - eric.env
+    deploy:
+      replicas: 1
+
